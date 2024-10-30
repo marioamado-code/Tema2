@@ -7,15 +7,25 @@ public class Ejercicio10 {
 
 	public static void main(String[] args) {
 		// Introducimos la variable numero
+
 		int num = 0;
-		int cont = 1;
-		int numDiv = 0;
-		int contInverso=0;
-		int numAlante=0;
-		int numDetras=0;
+
+		// Introducimos la variable numero inverso para el while, tambien la cifra y el
+
+		// numero original
+
+		int numInverso = 0;
+
+		int cifra;
+
+		int numOriginal = 0;
+
 		// Introducimos la variable booleana para salir del bucle de la excepcion
+
 		boolean error = false;
+
 		// Introducimos el escáner
+
 		Scanner sc = new Scanner(System.in);
 
 		// Aqui ponemos la excepcion del numero
@@ -46,27 +56,42 @@ public class Ejercicio10 {
 
 				error = true;
 
-			} finally {
-
-				sc.nextLine();
-
 			}
 
+			sc.nextLine();
+
 		} while (error);
-		numDiv=num/10;
-		while(numDiv>0) {
-			numDiv=numDiv/10;
-			cont++;
+
+		// Asociamos la variable numero original para evitar que al comparar despues el
+
+		// num no sea 0
+
+		numOriginal = num;
+
+		// Creamos el while mientras el numero original no sea 0
+
+		while (numOriginal != 0) {
+
+			// Calculamos la cifra más pequeña
+
+			cifra = numOriginal % 10;
+
+			// Le damos la vuelta al numero
+
+			numInverso = numInverso * 10 + cifra;
+
+			// Vamos bajando de nivel
+
+			numOriginal /= 10;
+
 		}
-		do {
-	for(int i=(int)Math.pow(10,contInverso);i>=0;contInverso++) {
-		numAlante=num/i;
-	}
-	for(int j=(int)Math.pow(10,cont);j>=0;cont--) {
-		numDetras=num%j;
-	}
-		
-		}while(numDetras==numAlante);
+
+		// Comparamos el numero creado con el original
+
+		System.out.println(num == numInverso ? num + " es capicua" : num + " no es capicua");
+
+		// Cerramos el escáner
+
 		sc.close();
 
 	}
